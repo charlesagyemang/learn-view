@@ -6,9 +6,8 @@ let app = new Vue({
   data: {
     product: 'Boots',
     googleLink: "https://google.com",
-    image: 'https://cdn.shopify.com/s/files/1/0052/7237/1293/products/1024x1024-Socks-White-LB1_1024x1024.jpg?v=1561393817',
-    image2: 'https://cdn.shopify.com/s/files/1/0052/7237/1293/products/1024x1024-Unisex-CrewSocks-Navy-LB2_864x864.jpg?v=1561506248',
     inventory: 90,
+    selectedVariant: 0,
     inStock: true,
     details: [
       "80% Cotton",
@@ -38,10 +37,18 @@ let app = new Vue({
       this.cart += 1;
     },
 
-    updateProduct: function(variantImage) {
-      this.image2 = variantImage;
+    updateProduct: function(index) {
+      this.selectedVariant = index;
     },
 
+
+
+  },
+
+  computed: {
+    image() {
+      return this.variants[this.selectedVariant].variantImage;
+    },
   },
 
 });

@@ -13,7 +13,7 @@
         <div class="row">
           <div class="col">
             <div class="product-image">
-              <img :src="image2" alt="" height="400" width="400">
+              <img :src="image" height="400" width="400">
               <a :href="googleLink" target="_blank">Heyaa</a>
             </div>
           </div>
@@ -29,11 +29,11 @@
               </ul>
 
 
-              <div v-for="variant in variants"
+              <div v-for="(variant, index) in variants"
                    :key="variant.variantId"
                    class="color-box"
                    :style="{ backgroundColor: variant.variantColor }"
-                   @mouseover="updateProduct(variant.variantImage)">
+                   @mouseover="updateProduct(index)">
               </div>
 
               <div class="container">
