@@ -9,7 +9,19 @@
     </head>
   <body>
     <div id="app">
-      <product :premium="premium"></product>
+
+        <div class="row">
+          <div class="col">
+             <product :premium="premium" @add-to-cart="updateCart"></product>
+          </div>
+          <div class="col">
+            <p>Cart ({{cart}}) </p>
+          </div>
+        </div>
+
+
+
+
     </div>
 
     <!-- jQuery library -->

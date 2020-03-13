@@ -1,4 +1,9 @@
 
+// create a component
+
+Vue.config.devtools = true;
+
+
 Vue.component('product',{
   props: {
     premium: {
@@ -35,29 +40,8 @@ Vue.component('product',{
                        :style="{ backgroundColor: variant.variantColor }"
                        @mouseover="updateProduct(index)">
                   </div>
-
-                  <div class="container">
-                    <div class="row">
-
-                      <div class="col">
-                        <button v-on:click="addToCart" class="btn btn-primary" :disabled="!inStock"> Add to Cart </button>
-                      </div>
-
-                      <div class="col">
-                        <div class="cart">
-                          <p>Cart ({{cart}}) </p>
-                        </div>
-                      </div>
-
-                    </div>
-                  </div>
-
-
-
+                  <button v-on:click="addToCart" class="btn btn-primary" :disabled="!inStock"> Add to Cart </button>
                 </div>
-              </div>
-              <div class="col">
-
               </div>
             </div>
           </div>
@@ -66,12 +50,11 @@ Vue.component('product',{
     methods: {
 
       addToCart: function () {
-        this.cart += 1;
+        this.$emit('add-to-cart');
       },
 
       updateProduct: function(index) {
         this.selectedVariant = index;
-        // console.log(this.inStock);
       },
 
 
@@ -120,15 +103,26 @@ Vue.component('product',{
             variantQuantity: 0,
           },
         ],
-
-        cart: 0,
       };
     },
 });
 
+// main app js
 let app = new Vue({
+
   el: '#app',
+
   data: {
     premium: false,
+    cart: 0,
+  },
+
+  methods: {
+
+    updateCart: function () {
+      this.cart += 1;
+      // console.log("hey");
+    },
+
   },
 });
