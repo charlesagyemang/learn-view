@@ -36,15 +36,15 @@
               <div class="container">
                 <div class="row">
                   <div class="col">
-                    <button class="btn btn-primary"> Add to Cart </button>
+                    <button v-on:click="cart += 1" class="btn btn-primary"> Add to Cart </button>
 
                   </div>
                   <div class="col">
                     <div class="cart">
-                      <p>Cart {{cart}} </p>
+                      <p>Cart ({{cart}}) </p>
                     </div>
                   </div>
-                  
+
                 </div>
               </div>
 
