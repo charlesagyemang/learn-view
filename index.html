@@ -9,58 +9,7 @@
     </head>
   <body>
     <div id="app">
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col">
-            <div class="product-image">
-              <img :src="image" height="400" width="400">
-              <a :href="googleLink" target="_blank">Heyaa</a>
-            </div>
-          </div>
-          <div class="col">
-            <div class="product-info">
-
-              <h1>{{ product }}</h1>
-              <p v-if="inStock">In Stock</p>
-              <p v-else>Out Of Stock</p>
-
-              <ul>
-                <li v-for="detail in details">{{ detail }}</li>
-              </ul>
-
-
-              <div v-for="(variant, index) in variants"
-                   :key="variant.variantID"
-                   class="color-box"
-                   :style="{ backgroundColor: variant.variantColor }"
-                   @mouseover="updateProduct(index)">
-              </div>
-
-              <div class="container">
-                <div class="row">
-
-                  <div class="col">
-                    <button v-on:click="addToCart" class="btn btn-primary" :disabled="!inStock"> Add to Cart </button>
-                  </div>
-
-                  <div class="col">
-                    <div class="cart">
-                      <p>Cart ({{cart}}) </p>
-                    </div>
-                  </div>
-
-                </div>
-              </div>
-
-
-
-            </div>
-          </div>
-          <div class="col">
-
-          </div>
-        </div>
-      </div>
+      <product></product>
     </div>
 
     <!-- jQuery library -->
