@@ -39,7 +39,7 @@ let app = new Vue({
 
     updateProduct: function(index) {
       this.selectedVariant = index;
-      console.log(this.inStock);
+      // console.log(this.inStock);
     },
 
 
@@ -47,11 +47,11 @@ let app = new Vue({
   },
 
   computed: {
-    image() {
+    image: function () {
       return this.variants[this.selectedVariant].variantImage;
     },
 
-    inStock() {
+    inStock: function () {
       return this.variants[this.selectedVariant].variantQuantity;
     }
   },
