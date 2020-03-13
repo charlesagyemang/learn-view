@@ -17,12 +17,12 @@ let app = new Vue({
     variants: [
       {
         variantID: 2234,
-        variantColor: 'green',
+        variantColor: 'White',
         variantImage: 'https://cdn.shopify.com/s/files/1/0052/7237/1293/products/1024x1024-Socks-White-LB1_1024x1024.jpg?v=1561393817',
       },
       {
         variantID: 2235,
-        variantColor: 'blue',
+        variantColor: 'Blue-Black',
         variantImage: 'https://cdn.shopify.com/s/files/1/0052/7237/1293/products/1024x1024-Unisex-CrewSocks-Navy-LB2_864x864.jpg?v=1561506248',
       },
 
@@ -35,6 +35,10 @@ let app = new Vue({
 
     addToCart: function () {
       this.cart += 1;
+    },
+
+    updateProduct: function(variantImage) {
+      this.image2 = variantImage;
     },
 
   },

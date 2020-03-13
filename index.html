@@ -30,7 +30,7 @@
 
 
               <div v-for="variant in variants" :key="variant.variantId">
-                <p>{{variant.variantColor}}</p>
+                <p @mouseover="updateProduct(variant.variantImage)">{{variant.variantColor}}</p>
               </div>
 
               <div class="container">
@@ -48,8 +48,6 @@
 
                 </div>
               </div>
-
-
 
 
 
