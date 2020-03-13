@@ -19,6 +19,11 @@
           <p v-show="inventory > 10">In Stock</p>
           <p v-show="inventory <= 10 && inventory > 0">Almost Out Of Stock</p>
           <p v-show="inventory == 0">Out Of Stock</p>
+
+
+          <ul>
+            <li v-for="detail in details">{{ detail }}</li>
+          </ul>
         </div>
       </div>
     </div>
