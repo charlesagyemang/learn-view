@@ -42,9 +42,25 @@ Vue.component('product',{
                        @mouseover="updateProduct(index)">
                   </div>
                   <button v-on:click="addToCart" class="btn btn-primary" :disabled="!inStock"> Add to Cart </button>
+
+
                 </div>
               </div>
             </div>
+
+            <div>
+              <h2>Reviews</h2>
+              <p v-if="reviews.length < 1">There are no reviews yet.</p>
+              <ul>
+                <li v-for="review in reviews">
+                  <p>Name: {{ review.name }}</p>
+                  <p>Rating: {{ review.rating }}</p>
+                  <p>Review: {{ review.review }}</p>
+                </li>
+              </ul>
+            </div>
+            <product-review @review-submitted="addReview"></product-review>
+
           </div>
   `,
 
@@ -58,6 +74,9 @@ Vue.component('product',{
         this.selectedVariant = index;
       },
 
+      addReview: function(productReview) {
+        this.reviews.push(productReview);
+      },
 
 
     },
@@ -104,17 +123,67 @@ Vue.component('product',{
             variantQuantity: 0,
           },
         ],
+        reviews: [],
       };
     },
 });
 // create a product-review component
 
 Vue.component('product-review', {
-  template: ``,
+  template: `
+  <form class="review-form" @submit.prevent="onSubmit">
+
+    <p>
+      <label for="name">Name:</label>
+      <input id="name" v-model="name"></input>
+    </p>
+
+    <p>
+      <label for="review">Review:</label>
+      <textarea id="review" v-model="review" required></textarea>
+    </p>
+
+    <p>
+      <label for="rating">Review:</label>
+      <select id="rating" v-model.number="rating">
+        <option>5</option>
+        <option>4</option>
+        <option>3</option>
+        <option>2</option>
+        <option>1</option>
+      </select>
+    </p>
+
+    <p>
+      <input type="submit" value="submit">
+    </p>
+
+  </form>
+  `,
   data: function () {
     return {
       name: null,
+      review: "",
+      rating: "",
     };
+  },
+
+  methods: {
+    onSubmit: function () {
+
+      let productReview = {
+        name: this.name,
+        review: this.review,
+        rating: this.rating,
+      };
+
+      this.$emit('review-submitted', productReview);
+
+      this.name = null;
+      this.review = null;
+      this.rating = null;
+
+    },
   },
 });
 
