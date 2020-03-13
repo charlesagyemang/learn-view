@@ -14,5 +14,16 @@ let app = new Vue({
       "20% Polyester",
       "General-neutral",
     ],
+    variants: [
+      {
+        variantID: 2234,
+        variantColor: "green",
+      },
+      {
+        variantID: 2235,
+        variantColor: "blue",
+      },
+
+    ],
   }
 });
