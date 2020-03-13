@@ -5,11 +5,9 @@
     <title>Product App</title>
     <link rel="stylesheet" href="app.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-
-    </head>
+  </head>
   <body>
     <div id="app">
-
         <div class="row">
           <div class="col">
              <product :premium="premium" @add-to-cart="updateCart"></product>
@@ -18,17 +16,9 @@
             <p>Cart ({{cart.length}}) </p>
           </div>
         </div>
-
-
-
-
     </div>
-
-    <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <!-- Popper JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
     <script src="index.js"></script>

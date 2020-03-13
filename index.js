@@ -1,8 +1,9 @@
 
-// create a component
+
 
 Vue.config.devtools = true;
 
+// create a product component
 
 Vue.component('product',{
   props: {
@@ -105,6 +106,16 @@ Vue.component('product',{
         ],
       };
     },
+});
+// create a product-review component
+
+Vue.component('product-review', {
+  template: ``,
+  data: function () {
+    return {
+      name: null,
+    };
+  },
 });
 
 // main app js
