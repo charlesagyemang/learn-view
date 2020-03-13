@@ -28,15 +28,29 @@
                 <li v-for="detail in details">{{ detail }}</li>
               </ul>
 
-              <button class="btn btn-primary"> Add to Cart </button>
 
               <div v-for="variant in variants" :key="variant.variantId">
                 <p>{{variant.variantColor}}</p>
               </div>
 
-              <div class="cart">
-                <p>Cart {{cart}} </p>
+              <div class="container">
+                <div class="row">
+                  <div class="col">
+                    <button class="btn btn-primary"> Add to Cart </button>
+
+                  </div>
+                  <div class="col">
+                    <div class="cart">
+                      <p>Cart {{cart}} </p>
+                    </div>
+                  </div>
+                  
+                </div>
               </div>
+
+
+
+
 
             </div>
           </div>
