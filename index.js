@@ -8,7 +8,6 @@ let app = new Vue({
     googleLink: "https://google.com",
     inventory: 90,
     selectedVariant: 0,
-    inStock: true,
     details: [
       "80% Cotton",
       "20% Polyester",
@@ -19,13 +18,14 @@ let app = new Vue({
         variantID: 2234,
         variantColor: 'green',
         variantImage: 'https://cdn.shopify.com/s/files/1/0052/7237/1293/products/1024x1024-Socks-White-LB1_1024x1024.jpg?v=1561393817',
+        variantQuantity: 10,
       },
       {
         variantID: 2235,
         variantColor: 'blue',
         variantImage: 'https://cdn.shopify.com/s/files/1/0052/7237/1293/products/1024x1024-Unisex-CrewSocks-Navy-LB2_864x864.jpg?v=1561506248',
+        variantQuantity: 0,
       },
-
     ],
 
     cart: 0,
@@ -39,6 +39,7 @@ let app = new Vue({
 
     updateProduct: function(index) {
       this.selectedVariant = index;
+      console.log(this.inStock);
     },
 
 
@@ -49,6 +50,10 @@ let app = new Vue({
     image() {
       return this.variants[this.selectedVariant].variantImage;
     },
+
+    inStock() {
+      return this.variants[this.selectedVariant].variantQuantity;
+    }
   },
 
 });
