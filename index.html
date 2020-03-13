@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>Product App</title>
+    <link rel="stylesheet" href="app.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 
     </head>
@@ -20,24 +21,26 @@
             <div class="product-info">
 
               <h1>{{ product }}</h1>
-              <p v-show="inventory > 10">In Stock</p>
-              <p v-show="inventory <= 10 && inventory > 0">Almost Out Of Stock</p>
-              <p v-show="inventory == 0">Out Of Stock</p>
+              <p v-if="inStock">In Stock</p>
+              <p v-else>Out Of Stock</p>
 
               <ul>
                 <li v-for="detail in details">{{ detail }}</li>
               </ul>
 
 
-              <div v-for="variant in variants" :key="variant.variantId">
-                <p @mouseover="updateProduct(variant.variantImage)">{{variant.variantColor}}</p>
+              <div v-for="variant in variants"
+                   :key="variant.variantId"
+                   class="color-box"
+                   :style="{ backgroundColor: variant.variantColor }"
+                   @mouseover="updateProduct(variant.variantImage)">
               </div>
 
               <div class="container">
                 <div class="row">
 
                   <div class="col">
-                    <button v-on:click="addToCart" class="btn btn-primary"> Add to Cart </button>
+                    <button v-on:click="addToCart" class="btn btn-primary" :disabled="!inStock"> Add to Cart </button>
                   </div>
 
                   <div class="col">
