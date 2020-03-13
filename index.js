@@ -50,7 +50,7 @@ Vue.component('product',{
     methods: {
 
       addToCart: function () {
-        this.$emit('add-to-cart');
+        this.$emit('add-to-cart', this.variants[this.selectedVariant].variantID);
       },
 
       updateProduct: function(index) {
@@ -114,13 +114,13 @@ let app = new Vue({
 
   data: {
     premium: false,
-    cart: 0,
+    cart: [],
   },
 
   methods: {
 
-    updateCart: function () {
-      this.cart += 1;
+    updateCart: function (id) {
+      this.cart.push(id);
       // console.log("hey");
     },
 
