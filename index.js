@@ -26,6 +26,6 @@ let app = new Vue({
 
     ],
 
-    
+    cart: 0,
   }
 });

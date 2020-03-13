@@ -3,35 +3,56 @@
   <head>
     <meta charset="utf-8">
     <title>Product App</title>
-  </head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+
+    </head>
   <body>
-
     <div id="app">
-      <div class="product">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col">
+            <div class="product-image">
+              <img :src="image2" alt="" height="400" width="400">
+              <a :href="googleLink" target="_blank">Heyaa</a>
+            </div>
+          </div>
+          <div class="col">
+            <div class="product-info">
 
-        <div class="product-image">
-          <img :src="image2" alt="">
-          <a :href="googleLink" target="_blank">Heyaa</a>
-        </div>
+              <h1>{{ product }}</h1>
+              <p v-show="inventory > 10">In Stock</p>
+              <p v-show="inventory <= 10 && inventory > 0">Almost Out Of Stock</p>
+              <p v-show="inventory == 0">Out Of Stock</p>
 
-        <div class="product-info">
-          <h1>{{ product }}</h1>
-          <p v-show="inventory > 10">In Stock</p>
-          <p v-show="inventory <= 10 && inventory > 0">Almost Out Of Stock</p>
-          <p v-show="inventory == 0">Out Of Stock</p>
+              <ul>
+                <li v-for="detail in details">{{ detail }}</li>
+              </ul>
 
+              <button class="btn btn-primary"> Add to Cart </button>
 
-          <ul>
-            <li v-for="detail in details">{{ detail }}</li>
-          </ul>
+              <div v-for="variant in variants" :key="variant.variantId">
+                <p>{{variant.variantColor}}</p>
+              </div>
 
-          <div v-for="variant in variants" :key="variant.variantId">
-            <p>{{variant.variantColor}}</p>
+              <div class="cart">
+                <p>Cart {{cart}} </p>
+              </div>
+
+            </div>
+          </div>
+          <div class="col">
+
           </div>
         </div>
       </div>
     </div>
 
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
     <script src="index.js"></script>
   </body>
